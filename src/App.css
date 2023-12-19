@@ -1,0 +1,186 @@
+*{
+    @apply font-nunito
+}
+
+
+/*Start registration*/
+#registration{
+    @apply h-screen flex items-center
+}
+#registration .main{
+    @apply container px-1 lg:px-2 mx-auto flex justify-between flex-wrap items-center
+}
+#registration .main .left{
+    @apply w-full md:w-[48%] align-middle m-auto
+}
+#registration .main .left img{
+    @apply w-[120px] md:w-[200px] m-auto
+}
+#registration .main .right{
+    @apply w-full md:w-1/2 mt-7
+}
+#registration .main .right h1{
+    @apply text-center text-[20px] font-bold text-secound
+}
+#registration .main .right h2{
+    @apply text-center text-[12px] text-[#A4ADD0]  mb-7 
+}
+#registration .main .right input{
+    @apply focus:border-primary py-2 px-4 mt-3 md:mt-5 outline-none w-[80%] md:w-[55%] border-2 border-secound m-auto block rounded-lg
+}
+#registration .main .right p{
+    @apply text-center text-red-500 text-[12px]
+}
+.btn_v_1{
+    @apply w-[80%] mt-3 md:mt-5 md:w-[55%] block m-auto rounded-lg bg-secound active:bg-primary py-1 px-3 text-white font-semibold
+}
+/* End registration*/
+
+/* Start Login*/
+#login{
+    @apply h-screen flex items-center
+}
+#login .main{
+    @apply container px-1 lg:px-2 mx-auto flex justify-between flex-wrap items-center
+}
+#login .main .left{
+    @apply w-full md:w-[48%] align-middle m-auto
+}
+#login .main .left img{
+    @apply w-[120px] md:w-[200px] m-auto
+}
+#login .main .right{
+    @apply w-full md:w-1/2 mt-7
+}
+#login .main .right h1{
+    @apply text-center text-[20px] font-bold text-primary
+}
+#login .main .right h2{
+    @apply text-center text-[12px] text-[#A4ADD0]  mb-7 
+}
+#login .main .right input{
+    @apply focus:border-secound py-2 px-4 mt-3 md:mt-5 outline-none w-[80%] md:w-[55%] border-2 border-primary m-auto block rounded-lg
+}
+#login .main .right p{
+    @apply text-center text-red-500 text-[12px]
+}
+.btn_v_1{
+    @apply w-[80%] mt-3 md:mt-5 md:w-[55%] block m-auto rounded-lg bg-primary active:bg-primary py-1 px-3 text-white font-semibold
+}
+/* Start Login*/
+
+
+/* Start Navbar*/
+
+/* #navbar{
+    @apply block md:flex
+}
+#navbar .sidebar{
+    @apply py-2 md:py-5 md:px-5 md:text-center bg-primary text-white md:h-screen flex md:grid justify-around items-center
+}
+#navbar .sidebar .bars {
+    @apply w-[50px] 
+}
+#navbar .sidebar .bars img{
+   @apply rounded-full
+}
+#navbar .sidebar .bars .profile_opacity{
+    @apply bg-black absolute top-0 left-0 w-[50px] h-[50px] rounded-full opacity-25
+}
+#navbar .sidebar .bars .upload_icon{
+    @apply absolute top-[33%] text-[20px] right-1/2 translate-x-1/2
+}
+#navbar .sidebar .top_section{
+    @apply flex items-center md:ml-[-10px] 
+}
+#navbar .link_test{
+    @apply  md:block hidden
+}
+#navbar .icon{
+    @apply text-[30px] cursor-pointer md:mb-[px] p-0
+}
+#navbar .icon:target{
+    @apply bg-black
+}
+.profile_hover{
+    @apply hidden
+}
+#navbar .sidebar .bars:hover .profile_hover{
+    @apply block cursor-pointer
+} */
+#navbar{
+    @apply px-4 bg-primary py-2 md:px-28
+}
+#navbar ul{
+    @apply flex justify-between items-center
+}
+#navbar ul li{
+    @apply text-[30px] text-white duration-300 ease-in-out 
+}
+#navbar ul li:hover{
+    @apply text-gray-300
+}
+#navbar .img{
+    @apply w-[50px] h-[50px] rounded-full  overflow-hidden relative duration-300 ease-in-out 
+}
+#navbar .img img{
+    @apply w-full
+}
+#navbar .profile_opacity{
+    @apply bg-black w-[50px] h-[50px] absolute top-0 left-0 z-10 opacity-25
+}
+#navbar .upload_icon{
+    @apply absolute top-[33%] text-[20px] right-1/2 translate-x-1/2 text-white opacity-100
+}
+#navbar .profile_hover{
+    @apply hidden
+}
+#navbar .img:hover .profile_hover{
+    @apply block duration-300 ease-in-out 
+}
+
+/* End Navbar*/
+
+/* Start Home*/
+
+#home{    
+    @apply  md:h-screen pt-5 px-2 md:px-5 md:py-5 flex justify-between flex-wrap md:w-[86vw] m-auto
+}
+#home .item{    
+ @apply w-full md:w-[32%] 
+}
+.list {
+    @apply mb-7  relative shadow-[0px_0px_30px_2px_#e2e8f0] md:rounded-lg h-[50vh] md:h-[45vh] overflow-scroll
+}
+.list::-webkit-scrollbar{
+    @apply w-[5px] 
+     
+}
+.list::-webkit-scrollbar-thumb{
+    @apply bg-primary
+}
+.list::-webkit-scrollbar-x{
+    @apply hidden
+}
+.list .img_name{
+    @apply flex gap-3 items-center
+}
+.list .img{
+    @apply overflow-hidden w-[40px] h-[40px] rounded-full bg-gray-500
+}
+.list .img_r{
+    @apply overflow-hidden w-[45px] md:w-[40px] h-[45px] md:h-[40px] rounded-full bg-black
+}
+.list .img img{
+    @apply w-full 
+}
+.btn_v_3{
+    @apply flex rounded-lg py-1 px-2 bg-primary text-white text-[15px] transform active:scale-[1.2] duration-300
+}
+.user_list{
+    @apply flex justify-between items-center border-b-primary border-b-[1px] pb-2 pt-2 px-2
+}
+.user_header{
+    @apply  sticky top-0 left-0 bg-primary text-white p-3 font-bold z-10
+}
+/* End Home*/
