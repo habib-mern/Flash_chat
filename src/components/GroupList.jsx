@@ -1,9 +1,10 @@
-import { getDatabase, push, ref, set } from "firebase/database";
-import { useState } from "react";
-import {AiOutlineUsergroupAdd} from "react-icons/ai";
+import { getDatabase, onValue, push, ref, set } from "firebase/database";
+import { useEffect, useState } from "react";
+
 import {MdGroupAdd, MdOutlineCancel} from "react-icons/md";
 import { useSelector } from "react-redux";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import { toast } from "react-toastify";
 
 const GroupList = () => {
 
@@ -14,6 +15,8 @@ const GroupList = () => {
     const [groupName, setGroupName] = useState("")
     const [tagName, setTagName] = useState("")
     const [loading, setLoading] = useState(false)
+    const [grouplist, setGroupList] = useState([])
+    console.log(grouplist)
 
     const handleGroupName = (e)=>{
         setGroupName(e.target.value)
@@ -44,6 +47,41 @@ const GroupList = () => {
         }
     }
 
+    //get group list
+
+
+    useEffect(()=>{
+        const groupRef = ref(db,"group")
+
+        onValue(groupRef,(snapshot)=>{
+            let list = []
+            snapshot.forEach((item)=>{
+                if(data.uid != item.val().adminId){
+                    list.push({...item.val(),id:item.key})
+                }
+            })
+            setGroupList(list)
+        })
+    },[])
+
+    //get group list
+
+    //send join request start
+    const handlejoinrequest = (item)=>{
+        set(push(ref(db,"groupJoinRequest")),{
+            groupId: item.id,
+            groupName: item.groupName,
+            adminId: item.adminId,
+            adminName: item.adminName,
+            userId: data.uid,
+            userName: data.displayName,
+            tagName: item.tagName
+
+        }).then(()=>{
+            toast.success(`Successfully sent join request to ${item.groupName}`)
+        })
+    }
+    //send join request end
 
     return (
         <div className='list'>
@@ -79,18 +117,26 @@ const GroupList = () => {
                     </div>
                 </div>
                 :
-            <div className=" user_list ">
+                    (
+                        grouplist.map(item=>{
+                            return(
+                                <div key={item.id} className=" user_list ">
 
-                <div className='img_name'>
-                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
-                    <div className='name'>
-                        <h1>Ahsanul Shawon</h1>
-                    </div>
-                </div>
-                <div className="mr-3">
-                    <button className="btn_v_3 "><AiOutlineUsergroupAdd className=" text-[20px] "/></button>
-                </div>
-            </div>
+                                <div className='img_name'>
+                                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
+                                    <div className='name'>
+                                        <h1 className="font-bold">{item.groupName}</h1>
+                                        <p className="text-[12px] !text-primary"> Admin : {item.adminName}</p>
+                                       
+                                    </div>
+                                </div>
+                                <div className="mr-3">
+                                    <button onClick={()=>handlejoinrequest(item)} className="btn_v_3 font-semibold">Join</button>
+                                </div>
+                            </div>
+                            )
+                        })
+                    )
 
             }
 

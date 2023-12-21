@@ -1,8 +1,30 @@
-import {PiMessengerLogoBold} from "react-icons/pi";
+import {MdOutlineInfo} from "react-icons/md";
+import { MdConnectWithoutContact } from "react-icons/md";
 import {BsThreeDotsVertical} from "react-icons/bs";
-import {RxExit} from "react-icons/rx";
+import { getDatabase, onValue, ref } from "firebase/database";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const MyGroup = () => {
+
+    const db = getDatabase()
+    const data = useSelector((state) => state.userLoginInfo.userInfo)
+
+    const [grouplist, setGroupList] = useState([])
+
+    useEffect(()=>{
+        const groupRef = ref(db,"group")
+
+        onValue(groupRef,(snapshot)=>{
+            let list = []
+            snapshot.forEach((item)=>{
+                if(data.uid === item.val().adminId){
+                    list.push({...item.val(),id:item.key})
+                }
+            })
+            setGroupList(list)
+        })
+    },[])
     return (
         <div className='list'>
 
@@ -11,110 +33,35 @@ const MyGroup = () => {
                 <BsThreeDotsVertical/>
 
             </div>
-            <div className=" user_list ">
+            {
+                        grouplist.map(item=>{
+                            return(
+                                <div key={item.id} className=" user_list ">
 
-                <div className='img_name'>
-                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
-                    <div className='name'>
-                        <h1>Ahsanul Shawon</h1>
-                    </div>
-                </div>
-                <div className="mr-3 flex gap-1 ">
-                    <button className="btn_v_3 "><PiMessengerLogoBold title="Messenger" className=" text-[20px] "/></button>
-                    <button className="btn_v_3 bg-red-500"><RxExit title="Leave Group" className=" text-[20px] "/></button>
-                </div>
-            </div>
-            <div className=" user_list ">
+                                <div className='img_name'>
+                                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
+                                    <div className='name'>
+                                    <h1 className="font-bold">{item.groupName}</h1>
+                                    {
+                                        data.uid===item.adminId?
+                                        <p className="text-[12px] !text-primary">Tag : {item.tagName}</p>
+                                        :
+                                        <p className="text-[12px] !text-primary"> Admin : {item.adminName}</p>
 
-                <div className='img_name'>
-                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
-                    <div className='name'>
-                        <h1>Ahsanul Shawon</h1>
-                    </div>
-                </div>
-                <div className="mr-3 flex gap-1 ">
-                    <button className="btn_v_3 "><PiMessengerLogoBold title="Messenger" className=" text-[20px] "/></button>
-                    <button className="btn_v_3 bg-red-500"><RxExit title="Leave Group" className=" text-[20px] "/></button>
-                </div>
-            </div>
-            <div className=" user_list ">
 
-                <div className='img_name'>
-                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
-                    <div className='name'>
-                        <h1>Ahsanul Shawon</h1>
-                    </div>
-                </div>
-                <div className="mr-3 flex gap-1 ">
-                    <button className="btn_v_3 "><PiMessengerLogoBold title="Messenger" className=" text-[20px] "/></button>
-                    <button className="btn_v_3 bg-red-500"><RxExit title="Leave Group" className=" text-[20px] "/></button>
-                </div>
-            </div>
-            <div className=" user_list ">
+                                    }
+                                    </div>
+                                </div>
+                                <div className="mr-3 flex items-center gap-2">
+                                    <button title="Request" className="btn_v_3 bg-green-500 font-semibold"><MdConnectWithoutContact className=" text-[20px] "/></button>
+                                    <button className="btn_v_3 font-semibold"><MdOutlineInfo className=" text-[20px] "/></button>
 
-                <div className='img_name'>
-                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
-                    <div className='name'>
-                        <h1>Ahsanul Shawon</h1>
-                    </div>
-                </div>
-                <div className="mr-3 flex gap-1 ">
-                    <button className="btn_v_3 "><PiMessengerLogoBold title="Messenger" className=" text-[20px] "/></button>
-                    <button className="btn_v_3 bg-red-500"><RxExit title="Leave Group" className=" text-[20px] "/></button>
-                </div>
-            </div>
-            <div className=" user_list ">
+                                </div>
+                            </div>
+                            )
+                        })
+                    }
 
-                <div className='img_name'>
-                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
-                    <div className='name'>
-                        <h1>Ahsanul Shawon</h1>
-                    </div>
-                </div>
-                <div className="mr-3 flex gap-1 ">
-                    <button className="btn_v_3 "><PiMessengerLogoBold title="Messenger" className=" text-[20px] "/></button>
-                    <button className="btn_v_3 bg-red-500"><RxExit title="Leave Group" className=" text-[20px] "/></button>
-                </div>
-            </div>
-            <div className=" user_list ">
-
-                <div className='img_name'>
-                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
-                    <div className='name'>
-                        <h1>Ahsanul Shawon</h1>
-                    </div>
-                </div>
-                <div className="mr-3 flex gap-1 ">
-                    <button className="btn_v_3 "><PiMessengerLogoBold title="Messenger" className=" text-[20px] "/></button>
-                    <button className="btn_v_3 bg-red-500"><RxExit title="Leave Group" className=" text-[20px] "/></button>
-                </div>
-            </div>
-            <div className=" user_list ">
-
-                <div className='img_name'>
-                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
-                    <div className='name'>
-                        <h1>Ahsanul Shawon</h1>
-                    </div>
-                </div>
-                <div className="mr-3 flex gap-1 ">
-                    <button className="btn_v_3 "><PiMessengerLogoBold title="Messenger" className=" text-[20px] "/></button>
-                    <button className="btn_v_3 bg-red-500"><RxExit title="Leave Group" className=" text-[20px] "/></button>
-                </div>
-            </div>
-            <div className=" user_list ">
-
-                <div className='img_name'>
-                    <div className='img'><img src="../../public/image/dp.jpg" alt=""/></div>
-                    <div className='name'>
-                        <h1>Ahsanul Shawon</h1>
-                    </div>
-                </div>
-                <div className="mr-3 flex gap-1 ">
-                    <button className="btn_v_3 "><PiMessengerLogoBold className=" text-[20px] "/></button>
-                    <button className="btn_v_3 bg-red-500"><RxExit className=" text-[20px] "/></button>
-                </div>
-            </div>
 
         </div>
     );
