@@ -4,8 +4,6 @@ import {MdBlock} from "react-icons/md";
 import {useEffect, useState} from "react";
 import {getDatabase, ref, onValue, push, set, remove} from "firebase/database";
 import {useSelector} from "react-redux";
-import ProfilepictureRequest from "./ProfilePicture/ProfilepictureRequest";
-import {getDownloadURL, getStorage} from "firebase/storage";
 import ProfilePictureFriendList from "./ProfilePicture/ProfilePictureFriendList";
 
 const FriendList = () => {

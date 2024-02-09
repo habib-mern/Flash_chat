@@ -260,7 +260,7 @@ const SideNavbar = () => {
                                     : ""}
                                 to="/group"><HiOutlineUserGroup/></NavLink>
                         </li>
-                        <li className="cursor-pointer" onClick={handleLogout}><IoIosLogOut/></li>
+                                                <li className="cursor-pointer" onClick={handleLogout}><IoIosLogOut/></li>
                     </ul>
 
                 </div>

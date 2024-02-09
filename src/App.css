@@ -162,6 +162,26 @@
 .list::-webkit-scrollbar-x{
     @apply hidden
 }
+.chating::-webkit-scrollbar{
+    @apply w-[5px] 
+     
+}
+.chating::-webkit-scrollbar-thumb{
+    @apply bg-primary
+}
+.chating::-webkit-scrollbar-x{
+    @apply hidden
+}
+.chat_box::-webkit-scrollbar{
+    @apply w-[5px] 
+     
+}
+.chat_box::-webkit-scrollbar-thumb{
+    @apply bg-primary
+}
+.chat_box::-webkit-scrollbar-x{
+    @apply hidden
+}
 .list .img_name{
     @apply flex gap-3 items-center
 }

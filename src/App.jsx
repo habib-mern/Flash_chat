@@ -1,5 +1,5 @@
 import './App.css'
-import Chat from './pages/Chat'
+import Chat from './pages/Chat/Chat'
 import Group from './pages/Group'
 import Home from './pages/Home'
 import Profile from '../src/pages/Profile'

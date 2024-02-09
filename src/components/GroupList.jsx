@@ -16,7 +16,7 @@ const GroupList = () => {
     const [tagName, setTagName] = useState("")
     const [loading, setLoading] = useState(false)
     const [grouplist, setGroupList] = useState([])
-    console.log(grouplist)
+
 
     const handleGroupName = (e)=>{
         setGroupName(e.target.value)
